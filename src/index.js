@@ -8,6 +8,8 @@ const loadMoreBtn = document.querySelector('.load-more');
 let currentPage = 1;
 let currentQuery = '';
 
+loadMoreBtn.style.display = 'none';
+
 form.addEventListener('submit', async e => {
   e.preventDefault();
 
@@ -26,21 +28,19 @@ form.addEventListener('submit', async e => {
 
     console.log(photos);
 
-    // Wyczyść galerię przed dodaniem nowych zdjęć
     gallery.innerHTML = '';
 
     if (photos.length === 0) {
       Notify.failure('Brak wyników wyszukiwania');
-      loadMoreBtn.style.display = 'none'; // Ukryj przycisk "load more"
+      loadMoreBtn.style.display = 'none';
     } else {
-      // Przetwarzanie i wyświetlanie zdjęć na stronie
       photos.forEach(photo => {
         const image = document.createElement('img');
         image.src = photo.webformatURL;
         gallery.appendChild(image);
       });
 
-      loadMoreBtn.style.display = 'block'; // Pokaż przycisk "load more"
+      loadMoreBtn.style.display = 'block';
     }
   } catch (error) {
     Notify.failure(error);
@@ -59,9 +59,8 @@ loadMoreBtn.addEventListener('click', async () => {
 
     if (photos.length === 0) {
       Notify.failure('Brak kolejnych wyników');
-      loadMoreBtn.style.display = 'none'; // Ukryj przycisk "load more"
+      loadMoreBtn.style.display = 'none';
     } else {
-      // Dodawanie kolejnych zdjęć do galerii
       photos.forEach(photo => {
         const image = document.createElement('img');
         image.src = photo.webformatURL;
