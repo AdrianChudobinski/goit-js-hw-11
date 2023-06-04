@@ -32,5 +32,4 @@ form.addEventListener('submit', e => {
     }
   }
   getPhotos();
-  console.log(photos);
 });
