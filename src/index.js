@@ -31,7 +31,6 @@ form.addEventListener('submit', e => {
       Notify.failure(error);
     }
   }
-
-  // Wywołanie funkcji pobierającej zdjęcia
   getPhotos();
+  console.log(photos);
 });
